@@ -12,7 +12,7 @@ import {
   createCartStore,
   type CartStore,
   type CartState,
-  defaultInitState
+  defaultInitialState
 } from "./cart-store"
 
 export type CartStoreApi = ReturnType<typeof createCartStore>
@@ -31,11 +31,11 @@ export const CartStoreProvider = ({
   const storeRef = useRef<CartStoreApi | null>(null)
 
   if (storeRef.current === null) {
-    storeRef.current = createCartStore(initialState ?? defaultInitState)
+    storeRef.current = createCartStore(initialState ?? defaultInitialState)
   }
 
   useEffect(() => {
-    storeRef.current?.persist.hydrate()
+    storeRef.current?.persist.rehydrate()
   }, [])
 
   return (

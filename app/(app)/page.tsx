@@ -11,6 +11,7 @@ import { ALL_CATEGORIES_QUERY } from "@/sanity/queries/categories"
 import { FeaturedCarousel } from "@/components/app/FeaturedCarousel"
 import { FeaturedCarouselSkeleton } from "@/components/app/FeaturedCarouselSkeleton"
 import { CategoryTiles } from "@/components/app/CategoryTiles"
+import { ProductSection } from "@/components/app/ProductSection"
 
 interface PageProps {
   searchParams: Promise<{
@@ -101,7 +102,13 @@ export default async function HomePage({ searchParams }: PageProps) {
         </div>
       </div>
 
-      
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <ProductSection 
+          categories={categories}
+          products={products}
+          searchQuery={searchQuery}
+        />
+      </div>
     </div>
   )
 }

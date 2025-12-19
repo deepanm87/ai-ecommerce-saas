@@ -31,7 +31,7 @@ export const defaultInitialState: CartState = {
   isOpen: false
 }
 
-export const createCartStore = (initState: CartState = defaultInitState) => {
+export const createCartStore = (initState: CartState = defaultInitialState) => {
   return createStore<CartStore>()(
     persist(
       set => ({
@@ -57,7 +57,7 @@ export const createCartStore = (initState: CartState = defaultInitState) => {
           removeItem: productId => 
             set(state => ({
               items: state.items.filter(i => i.productId !== productId)
-            }))
+            })),
 
           updateQuantity: (productId, quantity) => 
             set(state => {
