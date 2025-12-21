@@ -13,7 +13,7 @@ interface CategoryTileProps {
 export function CategoryTiles({
   categories,
   activeCategory
-}: CategoryTilesProps) {
+}: CategoryTileProps) {
   return (
     <div className="relative">
       <div className="flex gap-4 overflow-x-auto py-4 pl-8 pr-4 sm:pl-12 sm:pr-6 lg:pl-10 lg:pr-8 scrollbar-hide">
