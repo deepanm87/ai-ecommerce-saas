@@ -12,7 +12,7 @@ import type {
 
 interface ProductSectionProps {
   categories: ALL_CATEGORIES_QUERYResult
-  products: FILTER__PRODUCTS_BY_NAME_QUERYResult
+  products: FILTER_PRODUCTS_BY_NAME_QUERYResult
   searchQuery: string
 }
 
