@@ -84,7 +84,7 @@ export async function createCheckoutSession(
       }
     }
 
-    const lineItems: Stripe.checkout.SessionCreateParams.LineItem[] = 
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = 
       validatedItems.map(({ product, quantity }) => ({
         price_data: {
           currency: "cad",

@@ -64,7 +64,7 @@ export function EmptyState({
       </Button>
     ) : (
       <Button
-        onClick={action.href}
+        onClick={action.onClick}
         disabled={action.disabled}
         className="mt-4"
       >

@@ -4,19 +4,21 @@ import Stripe from "stripe"
 import { client, writeClient } from "@/sanity/lib/client"
 import { ORDER_BY_STRIPE_PAYMENT_ID_QUERY } from "@/sanity/queries/orders"
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not defined")
+function getStripe() {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("STRIPE_SECRET_KEY is not defined")
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2025-12-15.clover"
+  })
 }
 
-if (!process.env.STRIPE_WEBHOOK_SECRET) {
-  throw new Error("STRIPE_WEBHOOK_SECRET is not defined")
+function getWebhookSecret() {
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    throw new Error("STRIPE_WEBHOOK_SECRET is not defined")
+  }
+  return process.env.STRIPE_WEBHOOK_SECRET
 }
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-12-15.clover"
-})
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 
 export async function POST(req: Request) {
   const body = await req.text()
@@ -29,6 +31,9 @@ export async function POST(req: Request) {
       { status: 400 }
     )
   }
+
+  const stripe = getStripe()
+  const webhookSecret = getWebhookSecret()
 
   let event: Stripe.Event
 
@@ -57,6 +62,7 @@ export async function POST(req: Request) {
 }
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  const stripe = getStripe()
   const stripePaymentId = session.payment_intent as string
 
   try {
