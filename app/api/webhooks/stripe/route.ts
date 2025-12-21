@@ -5,7 +5,7 @@ import { client, writeClient } from "@/sanity/lib/client"
 import { ORDER_BY_STRIPE_PAYMENT_ID_QUERY } from "@/sanity/queries/orders"
 
 if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_WEBHOOK_KEY is not defined")
+  throw new Error("STRIPE_SECRET_KEY is not defined")
 }
 
 if (!process.env.STRIPE_WEBHOOK_SECRET) {

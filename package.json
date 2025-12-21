@@ -12,6 +12,8 @@
     "typegen": "sanity schema extract && sanity typegen generate --enforce-required-fields"
   },
   "dependencies": {
+    "@ai-sdk/openai": "3.0.0-beta.111",
+    "@ai-sdk/react": "3.0.0-beta.169",
     "@clerk/nextjs": "^6.36.3",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-select": "^2.2.6",
@@ -22,6 +24,7 @@
     "@sanity/image-url": "^1.2.0",
     "@sanity/sdk-react": "^2.4.0",
     "@sanity/vision": "^4.22.0",
+    "ai": "6.0.0-beta.166",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.6.0",

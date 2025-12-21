@@ -39,7 +39,7 @@ export function AddToCartButton({
 
   const handleDecrement = () => {
     if (quantityInCart > 0) {
-      updateQuantity(productId, quantityCart - 1)
+      updateQuantity(productId, quantityInCart - 1)
     }
   }
 
