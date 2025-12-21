@@ -4,6 +4,7 @@ import { CartStoreProvider } from "@/lib/store/cart-store-provider"
 import { ChatStoreProvider } from "@/lib/store/chat-store-provider"
 import { Header } from "@/components/app/Header"
 import { CartSheet } from "@/components/app/CartSheet"
+import { ChatSheet } from "@/components/app/ChatSheet"
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             {children}
           </main>
           <CartSheet />
+          <ChatSheet />
         </ChatStoreProvider>
         <SanityLive />
       </CartStoreProvider>
