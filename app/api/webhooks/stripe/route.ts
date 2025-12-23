@@ -4,6 +4,10 @@ import Stripe from "stripe"
 import { client, writeClient } from "@/sanity/lib/client"
 import { ORDER_BY_STRIPE_PAYMENT_ID_QUERY } from "@/sanity/queries/orders"
 
+// Disable caching for webhook endpoint
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 function getStripe() {
   if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error("STRIPE_SECRET_KEY is not defined")
@@ -48,14 +52,23 @@ export async function POST(req: Request) {
     )
   }
 
-  switch (event.type) {
-    case "checkout.session.completed": {
-      const session = event.data.object as Stripe.Checkout.Session
-      await handleCheckoutCompleted(session)
-      break
+  try {
+    switch (event.type) {
+      case "checkout.session.completed": {
+        const session = event.data.object as Stripe.Checkout.Session
+        await handleCheckoutCompleted(session)
+        break
+      }
+      default:
+        console.log(`Unhandled event type: ${event.type}`)
     }
-    default:
-
+  } catch (error) {
+    console.error(`Error processing webhook event ${event.type}:`, error)
+    // Return 500 so Stripe will retry
+    return NextResponse.json(
+      { error: "Webhook processing failed" },
+      { status: 500 }
+    )
   }
 
   return NextResponse.json({ received: true })
@@ -65,12 +78,15 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const stripe = getStripe()
   const stripePaymentId = session.payment_intent as string
 
+  console.log(`Processing checkout.session.completed for session: ${session.id}`)
+
   try {
     const existingOrder = await client.fetch(ORDER_BY_STRIPE_PAYMENT_ID_QUERY, {
       stripePaymentId
     })
 
     if (existingOrder) {
+      console.log(`Order already exists for payment intent: ${stripePaymentId}`)
       return
     }
 
@@ -82,9 +98,22 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       quantities: quantitiesString
     } = session.metadata ?? {}
 
+    console.log("Session metadata:", {
+      clerkUserId,
+      userEmail,
+      sanityCustomerId,
+      productIds: productIdsString,
+      quantities: quantitiesString
+    })
+
     if (!clerkUserId || !productIdsString || !quantitiesString) {
-      console.error("Missing metadata in checkout session")
-      return
+      console.error("Missing required metadata in checkout session:", {
+        hasClerkUserId: !!clerkUserId,
+        hasProductIds: !!productIdsString,
+        hasQuantities: !!quantitiesString,
+        sessionId: session.id
+      })
+      throw new Error("Missing required metadata in checkout session")
     }
 
     const productIds = productIdsString.split(",")
@@ -137,6 +166,9 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       createdAt: new Date().toISOString()
     })
 
+    console.log(`Order created successfully: ${order._id} (${orderNumber})`)
+
+    // Update product stock
     await productIds
       .reduce(
         (tx, productId, i) => 
@@ -144,8 +176,14 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         writeClient.transaction()
       )
       .commit()
+
+    console.log(`Stock updated for ${productIds.length} products`)
   } catch (error) {
-    console.error(`Error handling checkout.session.completed: ${error}`)
+    console.error(`Error handling checkout.session.completed:`, error)
+    if (error instanceof Error) {
+      console.error(`Error message: ${error.message}`)
+      console.error(`Error stack: ${error.stack}`)
+    }
     throw error
   }
 }
