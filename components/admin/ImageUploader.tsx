@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils"
 
 interface SanityImageAsset {
   _type: "image"
-  _key: "string"
+  _key: string
   asset: {
     _type: "reference"
     _ref: string
@@ -134,7 +134,7 @@ function ImageUploaderContent(handle: DocumentHandle) {
         >
           {isUploading ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spiin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               {uploadProgress}
             </>
           ) : (
@@ -156,6 +156,7 @@ function ImageUploaderContent(handle: DocumentHandle) {
               isFirst={index === 0}
               onRemove={() => handleRemoveImage(image._key)}
               onMoveUp={() => handleMoveImage(index, index - 1)}
+              onMoveDown={() => handleMoveImage(index, index + 1)}
               canMoveUp={index > 0}
               canMoveDown={index < currentImages.length - 1}
             />

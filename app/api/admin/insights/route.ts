@@ -248,7 +248,7 @@ Guidelines:
 - Prioritize actionable insights
 - Keep highlights, alerts, and recommendations concise (under 100 characters each)
 - Focus on what the admin can do TODAY
-- Use £ for currency
+- Use $ for currency
 - Return ONLY valid JSON, no markdown formatting or code blocks`,
         prompt: `Analyze this e-commerce store data and provide insights:
 
@@ -278,7 +278,7 @@ Generate insights in the required JSON format. Return ONLY the JSON object, no m
       // Fallback to computed insights if AI fails
       insights = {
         salesTrends: {
-          summary: `Revenue this week: £${currentRevenue.toFixed(2)} (${revenueChange > 0 ? "+" : ""}${revenueChange.toFixed(1)}% vs last week)`,
+          summary: `Revenue this week: $${currentRevenue.toFixed(2)} (${revenueChange > 0 ? "+" : ""}${revenueChange.toFixed(1)}% vs last week)`,
           highlights: [
             `${revenuePeriod.currentOrderCount || 0} orders this week`,
             `Average order value: £${avgOrderValue.toFixed(2)}`,

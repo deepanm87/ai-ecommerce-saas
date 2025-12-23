@@ -3,6 +3,7 @@
 import { Suspense } from "react"
 import {
   useDocument,
+  useEditDocument,
   type DocumentHandle
 } from "@sanity/sdk-react"
 import { Input } from "@/components/ui/input"
