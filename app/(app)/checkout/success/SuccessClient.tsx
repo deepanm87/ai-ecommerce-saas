@@ -121,6 +121,12 @@ export function SuccessClient({ session }: SuccessClientProps) {
         </div>
       </div>
 
+      <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 dark:border-amber-800 dark:bg-amber-950/30">
+        <p className="text-sm text-amber-800 dark:text-amber-200">
+          <strong>Note:</strong> Your order is being processed. It may take a few moments to appear in your orders page. If you don&apos;t see it after a minute, please refresh the page.
+        </p>
+      </div>
+
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
         <Button asChild variant="outline">
           <Link href="/orders">

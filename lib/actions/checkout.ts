@@ -195,18 +195,13 @@ export async function createCheckoutSession(
 
 export async function getCheckoutSession(sessionId: string) {
   try {
-    const { userId } = await auth()
-
-    if (!userId) {
-      return { success: false, error: "Not authenticated" }
-    }
-
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ["line_items", "customer_details"]
     })
 
-    if (session.metadata?.clerkUserId !== userId) {
-      return { success: false, error: "Session not found" }
+    // Verify the session is completed
+    if (session.payment_status !== "paid") {
+      return { success: false, error: "Payment not completed" }
     }
 
     return {

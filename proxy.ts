@@ -4,7 +4,6 @@ const isProtectedRoute = createRouteMatcher([
   "/checkout",
   "/orders",
   "/orders[id]",
-  "/checkout/success",
   "/admin"
 ])
 
