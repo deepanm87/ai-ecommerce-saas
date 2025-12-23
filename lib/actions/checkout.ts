@@ -114,10 +114,21 @@ export async function createCheckoutSession(
       quantities: validatedItems.map(i => i.quantity).join(",")
     }
 
+    // Always use the production domain for checkout redirects
+    // VERCEL_URL can be a preview domain, so we prioritize NEXT_PUBLIC_BASE_URL
+    // Only use VERCEL_URL if we're in production environment
     const baseUrl = 
       process.env.NEXT_PUBLIC_BASE_URL ||
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) || 
-      "https://localhost:3000"
+      (process.env.VERCEL_ENV === "production" && process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}` 
+        : null) ||
+      "http://localhost:3000"
+    
+    console.log("Checkout baseUrl:", baseUrl, {
+      NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+      VERCEL_ENV: process.env.VERCEL_ENV,
+      VERCEL_URL: process.env.VERCEL_URL
+    })
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
