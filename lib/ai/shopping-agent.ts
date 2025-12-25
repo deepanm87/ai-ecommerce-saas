@@ -4,6 +4,7 @@ import { createGetMyOrdersTool } from "./tools/get-my-orders"
 
 interface ShoppingAgentOptions {
   userId: string | null
+  forceGateway?: boolean
 }
 
 const baseInstructions = `You are a friendly shopping assistant for a premium furniture store.
@@ -182,7 +183,7 @@ The user is not signed in. If they ask about orders, politely let them know they
 /**
  * Creates a shopping agent with tools based on user authentication status
  */
-export function createShoppingAgent({ userId }: ShoppingAgentOptions) {
+export function createShoppingAgent({ userId, forceGateway }: ShoppingAgentOptions) {
   const isAuthenticated = !!userId
 
   // Build instructions based on authentication
@@ -201,8 +202,15 @@ export function createShoppingAgent({ userId }: ShoppingAgentOptions) {
     tools.getMyOrders = getMyOrdersTool;
   }
 
+  // Prefer OpenAI when an `OPENAI_API_KEY` is present locally; otherwise use Vercel AI Gateway
+  const useOpenAI = Boolean(process.env.OPENAI_API_KEY) && !forceGateway
+
+  const model = useOpenAI
+    ? { provider: "openai", modelId: "gpt-4o" }
+    : gateway("anthropic/claude-sonnet-4.5")
+
   return new ToolLoopAgent({
-    model: gateway("anthropic/claude-sonnet-4.5"),
+    model,
     instructions,
     tools,
   })

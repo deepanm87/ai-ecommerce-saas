@@ -28,7 +28,7 @@ export function ChatSheet() {
   const [input, setInput] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const { messages, sendMessage, status } = useChat()
+  const { messages, sendMessage, status, error, clearError } = useChat()
   const isLoading = status === "streaming" || status === "submitted"
 
   useEffect(() => {
@@ -82,6 +82,21 @@ export function ChatSheet() {
         </header>
 
         <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
+          {error && (
+            <div className="mb-4 rounded-md border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">Chat is not available at this time — please try again later.</div>
+                <div className="shrink-0">
+                  <button
+                    className="text-xs font-medium underline"
+                    onClick={() => clearError?.()}
+                  >
+                    Dismiss
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
           {messages.length === 0 ? (
             <WelcomeScreen 
               onSuggestionClick={sendMessage}

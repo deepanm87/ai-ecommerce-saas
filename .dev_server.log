@@ -1,0 +1,410 @@
+
+> ai-ecommerce-saas@0.1.0 dev /Users/deepanm/Workspace/NextJS Projects/ai-ecommerce-saas
+> next dev
+
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.2.250:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 699ms
+No `serverToken` provided to `defineLive`. This means that only published content will be fetched and respond to live events. You can silence this warning by setting `serverToken: false`.
+No `browserToken` provided to `defineLive`. This means that live previewing drafts will only work when using the Presentation Tool in your Sanity Studio. To support live previewing drafts stand-alone, provide a `browserToken`. It is shared with the browser so it should only have Viewer rights or lower. You can silence this warning by setting `browserToken: false`.
+Error [AI_TypeValidationError]: Type validation failed: Value: [{"id":"1","role":"user","content":[{"type":"text","text":"Hello"}]}].
+Error message: [
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      0,
+      "parts"
+    ],
+    "message": "Invalid input: expected array, received undefined"
+  }
+]
+    at ignore-listed frames {
+  value: [Array],
+  [cause]: Error [ZodError]: [
+    {
+      "expected": "array",
+      "code": "invalid_type",
+      "path": [
+        0,
+        "parts"
+      ],
+      "message": "Invalid input: expected array, received undefined"
+    }
+  ]
+      at POST (app/api/chat/route.ts:12:37)
+    10 |   const agent = createShoppingAgent({ userId })
+    11 |
+  > 12 |   return createAgentUIStreamResponse({
+       |                                     ^
+    13 |     agent,
+    14 |     uiMessages: messages
+    15 |   })
+}
+ POST /api/chat 500 in 1464ms (compile: 1152ms, proxy.ts: 102ms, render: 210ms)
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:02:27 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::p2ttr-1766635346545-39f01b85eae0'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 951ms (compile: 5ms, proxy.ts: 10ms, render: 935ms)
+No `serverToken` provided to `defineLive`. This means that only published content will be fetched and respond to live events. You can silence this warning by setting `serverToken: false`.
+No `browserToken` provided to `defineLive`. This means that live previewing drafts will only work when using the Presentation Tool in your Sanity Studio. To support live previewing drafts stand-alone, provide a `browserToken`. It is shared with the browser so it should only have Viewer rights or lower. You can silence this warning by setting `browserToken: false`.
+ POST /api/chat 400 in 165ms (compile: 154ms, proxy.ts: 8ms, render: 4ms)
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:04:37 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::9xv68-1766635476535-1596b9c02afc'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 994ms (compile: 1691µs, proxy.ts: 5ms, render: 987ms)
+   Reload env: .env.local
+   Reload env: .env.local
+No `serverToken` provided to `defineLive`. This means that only published content will be fetched and respond to live events. You can silence this warning by setting `serverToken: false`.
+No `browserToken` provided to `defineLive`. This means that live previewing drafts will only work when using the Presentation Tool in your Sanity Studio. To support live previewing drafts stand-alone, provide a `browserToken`. It is shared with the browser so it should only have Viewer rights or lower. You can silence this warning by setting `browserToken: false`.
+AI agent stream error: Error [AI_UnsupportedModelVersionError]: Unsupported model version undefined for provider "openai" and model "gpt-4o-mini". AI SDK 5 only supports models that implement specification version "v2".
+    at async POST (app/api/chat/route.ts:68:12)
+  66 |
+  67 |   try {
+> 68 |     return await createAgentUIStreamResponse({
+     |            ^
+  69 |       agent,
+  70 |       uiMessages: messages
+  71 |     }) {
+  cause: undefined,
+  version: undefined,
+  provider: 'openai',
+  modelId: 'gpt-4o-mini'
+}
+ POST /api/chat 500 in 456ms (compile: 264ms, proxy.ts: 82ms, render: 110ms)
+No `serverToken` provided to `defineLive`. This means that only published content will be fetched and respond to live events. You can silence this warning by setting `serverToken: false`.
+No `browserToken` provided to `defineLive`. This means that live previewing drafts will only work when using the Presentation Tool in your Sanity Studio. To support live previewing drafts stand-alone, provide a `browserToken`. It is shared with the browser so it should only have Viewer rights or lower. You can silence this warning by setting `browserToken: false`.
+AI agent stream error: Error [AI_UnsupportedModelVersionError]: Unsupported model version undefined for provider "openai" and model "gpt-4o". AI SDK 5 only supports models that implement specification version "v2".
+    at async POST (app/api/chat/route.ts:68:12)
+  66 |
+  67 |   try {
+> 68 |     return await createAgentUIStreamResponse({
+     |            ^
+  69 |       agent,
+  70 |       uiMessages: messages
+  71 |     }) {
+  cause: undefined,
+  version: undefined,
+  provider: 'openai',
+  modelId: 'gpt-4o'
+}
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:08:25 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::nswhh-1766635704434-6c410d2f7a65'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 1364ms (compile: 111ms, proxy.ts: 6ms, render: 1247ms)
+AI agent stream error: Error [AI_UnsupportedModelVersionError]: Unsupported model version undefined for provider "openai" and model "gpt-4o". AI SDK 5 only supports models that implement specification version "v2".
+    at async POST (app/api/chat/route.ts:68:12)
+  66 |
+  67 |   try {
+> 68 |     return await createAgentUIStreamResponse({
+     |            ^
+  69 |       agent,
+  70 |       uiMessages: messages
+  71 |     }) {
+  cause: undefined,
+  version: undefined,
+  provider: 'openai',
+  modelId: 'gpt-4o'
+}
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:12:38 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::6fjgj-1766635957617-206678dec1be'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 1170ms (compile: 20ms, proxy.ts: 11ms, render: 1138ms)
+ ○ Compiling / ...
+No `serverToken` provided to `defineLive`. This means that only published content will be fetched and respond to live events. You can silence this warning by setting `serverToken: false`.
+No `browserToken` provided to `defineLive`. This means that live previewing drafts will only work when using the Presentation Tool in your Sanity Studio. To support live previewing drafts stand-alone, provide a `browserToken`. It is shared with the browser so it should only have Viewer rights or lower. You can silence this warning by setting `browserToken: false`.
+ GET / 200 in 6.7s (compile: 4.9s, proxy.ts: 5ms, render: 1815ms)
+ POST / 200 in 57ms (compile: 16ms, proxy.ts: 11ms, render: 30ms)
+AI agent stream error: Error [AI_UnsupportedModelVersionError]: Unsupported model version undefined for provider "openai" and model "gpt-4o". AI SDK 5 only supports models that implement specification version "v2".
+    at async POST (app/api/chat/route.ts:68:12)
+  66 |
+  67 |   try {
+> 68 |     return await createAgentUIStreamResponse({
+     |            ^
+  69 |       agent,
+  70 |       uiMessages: messages
+  71 |     }) {
+  cause: undefined,
+  version: undefined,
+  provider: 'openai',
+  modelId: 'gpt-4o'
+}
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:14:09 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::m6rs5-1766636048374-32ff271f3f8d'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 1039ms (compile: 13ms, proxy.ts: 14ms, render: 1013ms)
+No `serverToken` provided to `defineLive`. This means that only published content will be fetched and respond to live events. You can silence this warning by setting `serverToken: false`.
+No `browserToken` provided to `defineLive`. This means that live previewing drafts will only work when using the Presentation Tool in your Sanity Studio. To support live previewing drafts stand-alone, provide a `browserToken`. It is shared with the browser so it should only have Viewer rights or lower. You can silence this warning by setting `browserToken: false`.
+ GET / 200 in 1173ms (compile: 205ms, proxy.ts: 74ms, render: 894ms)
+ ✓ Compiled in 4ms
+ GET / 200 in 1148ms (compile: 8ms, proxy.ts: 19ms, render: 1120ms)
+ GET / 200 in 500ms (compile: 2ms, proxy.ts: 5ms, render: 493ms)
+ POST / 200 in 16ms (compile: 3ms, proxy.ts: 7ms, render: 6ms)
+AI agent stream error: Error [AI_UnsupportedModelVersionError]: Unsupported model version undefined for provider "openai" and model "gpt-4o". AI SDK 5 only supports models that implement specification version "v2".
+    at async POST (app/api/chat/route.ts:68:12)
+  66 |
+  67 |   try {
+> 68 |     return await createAgentUIStreamResponse({
+     |            ^
+  69 |       agent,
+  70 |       uiMessages: messages
+  71 |     }) {
+  cause: undefined,
+  version: undefined,
+  provider: 'openai',
+  modelId: 'gpt-4o'
+}
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:17:41 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::mswbh-1766636261404-7c16991dd1a7'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 889ms (compile: 4ms, proxy.ts: 11ms, render: 873ms)

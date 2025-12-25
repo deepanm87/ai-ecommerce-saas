@@ -53,13 +53,13 @@ export async function POST(req: Request) {
   }
 
   try {
-    switch (event.type) {
-      case "checkout.session.completed": {
-        const session = event.data.object as Stripe.Checkout.Session
-        await handleCheckoutCompleted(session)
-        break
-      }
-      default:
+  switch (event.type) {
+    case "checkout.session.completed": {
+      const session = event.data.object as Stripe.Checkout.Session
+      await handleCheckoutCompleted(session)
+      break
+    }
+    default:
         console.log(`Unhandled event type: ${event.type}`)
     }
   } catch (error) {
