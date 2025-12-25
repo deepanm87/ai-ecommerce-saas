@@ -408,3 +408,83 @@ Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on f
   }
 }
  POST /api/chat 200 in 889ms (compile: 4ms, proxy.ts: 11ms, render: 873ms)
+ GET / 200 in 675ms (compile: 35ms, proxy.ts: 248ms, render: 391ms)
+AI agent stream error: Error [AI_UnsupportedModelVersionError]: Unsupported model version undefined for provider "openai" and model "gpt-4o". AI SDK 5 only supports models that implement specification version "v2".
+    at async POST (app/api/chat/route.ts:68:12)
+  66 |
+  67 |   try {
+> 68 |     return await createAgentUIStreamResponse({
+     |            ^
+  69 |       agent,
+  70 |       uiMessages: messages
+  71 |     }) {
+  cause: undefined,
+  version: undefined,
+  provider: 'openai',
+  modelId: 'gpt-4o'
+}
+Error [GatewayInternalServerError]: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.
+    at ignore-listed frames {
+  statusCode: 403,
+  type: 'internal_server_error',
+  [cause]: Error [AI_APICallError]: [object Object]
+      at ignore-listed frames {
+    cause: undefined,
+    url: 'https://ai-gateway.vercel.sh/v1/ai/language-model',
+    requestBodyValues: {
+      maxOutputTokens: undefined,
+      temperature: undefined,
+      topP: undefined,
+      topK: undefined,
+      presencePenalty: undefined,
+      frequencyPenalty: undefined,
+      stopSequences: undefined,
+      seed: undefined,
+      tools: [Array],
+      toolChoice: [Object],
+      responseFormat: undefined,
+      prompt: [Array],
+      providerOptions: undefined,
+      headers: undefined,
+      includeRawChunks: false
+    },
+    statusCode: 403,
+    responseHeaders: {
+      'cache-control': 'public, max-age=0, must-revalidate',
+      'content-encoding': 'br',
+      'content-type': 'application/json',
+      date: 'Thu, 25 Dec 2025 04:26:03 GMT',
+      server: 'Vercel',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+      'transfer-encoding': 'chunked',
+      vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+      'x-matched-path': '/v1/ai/language-model',
+      'x-vercel-cache': 'MISS',
+      'x-vercel-id': 'yul1::iad1::4fc8p-1766636762320-66082de2f908'
+    },
+    responseBody: '{"error":{"message":"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.","type":"customer_verification_required"}}',
+    isRetryable: false,
+    data: { error: [Object] }
+  }
+}
+ POST /api/chat 200 in 1155ms (compile: 16ms, proxy.ts: 17ms, render: 1122ms)
+ GET / 200 in 743ms (compile: 40ms, proxy.ts: 33ms, render: 670ms)
+ GET / 200 in 1001ms (compile: 37ms, proxy.ts: 606ms, render: 359ms)
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.2.250:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1371ms
+ ○ Compiling /admin/inventory ...
+ GET /admin/inventory 200 in 4.4s (compile: 4.0s, proxy.ts: 136ms, render: 255ms)
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.2.250:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 728ms

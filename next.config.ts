@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
       }
     ]
   }
+  ,
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/inventory',
+        permanent: false,
+      },
+    ]
+  }
 }
 
 export default nextConfig
